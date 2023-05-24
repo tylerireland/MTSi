@@ -4,7 +4,8 @@
 - [Opening MIXR in Visual Studio](#opening-mixr-in-visual-studio)
 - [Running an Example](#running-an-example)
 - [MIXR Basics](#mixr-basics)
-- [mainSim1 example](#mainsim1-example)  
+- [mainSim1 example](#mainsim1-example)
+- [Additional Links](#additional-links)
 
 
 In this write up :
@@ -62,7 +63,7 @@ These two links provide a good amount of information on MIXR, like the history a
 
 
 
-### Helpful Links
+### Additional Links
 [The Mixed Reality Simulation Platform (MIXR)](https://www.mixr.dev/assets/pages/docs/the-mixed-reality-simulation-platform-csc-2018.pdf)  
 [Mixr Documentation](https://www.mixr.dev/docs.html)  
 [Design & Implementation of Virtual Simulations](https://www.mixr.dev/assets/pages/docs/iitsec-2008-tutorial.pdf)
