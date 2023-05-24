@@ -64,6 +64,6 @@ These two links provide a good amount of information on MIXR, like the history a
 
 
 ### Additional Links
-[The Mixed Reality Simulation Platform (MIXR)](https://www.mixr.dev/assets/pages/docs/the-mixed-reality-simulation-platform-csc-2018.pdf)  
-[Mixr Documentation](https://www.mixr.dev/docs.html)  
-[Design & Implementation of Virtual Simulations](https://www.mixr.dev/assets/pages/docs/iitsec-2008-tutorial.pdf)
+- [The Mixed Reality Simulation Platform (MIXR)](https://www.mixr.dev/assets/pages/docs/the-mixed-reality-simulation-platform-csc-2018.pdf)  
+- [Mixr Documentation](https://www.mixr.dev/docs.html)  
+- [Design & Implementation of Virtual Simulations](https://www.mixr.dev/assets/pages/docs/iitsec-2008-tutorial.pdf)
