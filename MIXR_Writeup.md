@@ -1,8 +1,15 @@
-- I am going to interact with the mainSim1 mixr example and attempt to connect a graphic to the simulation. 
-- I will be writing down all the step and my journey to accomplish this task.
-- I will format this document later, after I get a few things done!
-- This is the [.epp](https://github.com/tylerireland/MTSi/blob/main/test0.epp) file that I will be manipulating.
+# Working with MIXR (Mixed Reality Simulation Platform)
 
+In this write up I will explain how to:
+1. Open up Mixr with Visual Studio
+2. Add and run some examples
+
+I will also be recording my process in creating a simple graphical simulation
+
+By the end I hope to a have solid understanding of mixr and how each component works together.
+
+### Goal
+I am working with the mainSim1 example, which is a simple simulation of an aircraft flying at a set speed. I plan to track it's position and output it to a graphical display. Eventually, I may try to find ways to interact with the aircrafts velocity and heading and also output that to a display.
 
 # Beginning
 
