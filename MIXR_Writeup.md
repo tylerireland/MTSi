@@ -35,7 +35,9 @@ Once mixr is opened in visual studio:
 7. The project should build and run successfully
 
 ## MIXR Basics
-
+These two links provide a good amount of information on MIXR, like the history and overview, as well as the framework.
+- [The Mixed Reality Simulation Platform (MIXR)](https://www.mixr.dev/assets/pages/docs/the-mixed-reality-simulation-platform-csc-2018.pdf)  
+- [Mixr Documentation](https://www.mixr.dev/docs.html)
 
 ## mainSim1 example
 
@@ -44,7 +46,9 @@ Once mixr is opened in visual studio:
 - many factory classes are included as well
 
 ### test0.epp
-- location: ` mixr_examples / mainSim1 / configs `  
+- location: ` mixr_examples / mainSim1 / configs ` 
+- There is a copy of the file on my repo [**_here_**](https://github.com/tylerireland/MTSi/blob/main/test0.epp)  
+
 - At first glance, this file is really small. There are not many line at all. The description says that it is a single aircraft player (player being the aircraft).
 - A station is initialized and within the station contains an image generator, an interoperability interface, and a simulation scenario. 
     - Both interfaces are commented out, so I believe that they are not too important for the prgram to run.
@@ -60,4 +64,5 @@ Once mixr is opened in visual studio:
 
 ### Helpful Links
 [The Mixed Reality Simulation Platform (MIXR)](https://www.mixr.dev/assets/pages/docs/the-mixed-reality-simulation-platform-csc-2018.pdf)  
-[Mixr Documentation](https://www.mixr.dev/docs.html)
+[Mixr Documentation](https://www.mixr.dev/docs.html)  
+[Design & Implementation of Virtual Simulations](https://www.mixr.dev/assets/pages/docs/iitsec-2008-tutorial.pdf)
