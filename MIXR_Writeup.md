@@ -4,7 +4,7 @@
 - [Opening MIXR in Visual Studio](#opening-mixr-in-visual-studio)
 - [Running an Example](#running-an-example)
 - [MIXR Basics](#mixr-basics)
-- [mainSim1 example](#mainsim1-example)  
+- [mainSim1 examplea](#mainsim1-example)  
 
 
 In this write up :
