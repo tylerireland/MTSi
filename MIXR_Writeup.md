@@ -1,10 +1,10 @@
 # Working with MIXR (Mixed Reality Simulation Platform)
 
 ### **_Table of Contents_**
-- [**Opening MIXR in Visual Studio**](#opening-mixr-in-visual-studio)
-- [**Running an Example**](#running-an-example)
-- [**MIXR Basics**](#mixr-basics)
-- [**mainSim1 example**](#mainsim1-example)  
+- [Opening MIXR in Visual Studio](#opening-mixr-in-visual-studio)
+- [Running an Example](#running-an-example)
+- [MIXR Basics](#mixr-basics)
+- [mainSim1 example](#mainsim1-example)  
 
 
 In this write up :
