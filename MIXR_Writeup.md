@@ -1,5 +1,12 @@
 # Working with MIXR (Mixed Reality Simulation Platform)
 
+### **_Table of Contents_**
+- [**Opening MIXR in Visual Studio**](#opening-mixr-in-visual-studio)
+- [**Running an Example**](#running-an-example)
+- [**MIXR Basics**](#mixr-basics)
+- [**mainSim1 example**](#mainsim1-example)  
+
+
 In this write up :
 - I will explain how to open up Mixr with Visual Studio
 - I will show how to add and run some examples
@@ -27,9 +34,17 @@ Once mixr is opened in visual studio:
 6. Back in Visual Studo, right click on your project and select ` Set as Startup Project ` and the run the solution
 7. The project should build and run successfully
 
+## MIXR Basics
+
 
 ## mainSim1 example
-1. The .epp file is located in ` mixr_examples / mainSim1 / configs `
+
+### main.cpp
+- many class files are included, such as the Station, edl_parser, Pair, Integer, etc.
+- many factory classes are included as well
+
+### test0.epp
+- location: ` mixr_examples / mainSim1 / configs `  
 - At first glance, this file is really small. There are not many line at all. The description says that it is a single aircraft player (player being the aircraft).
 - A station is initialized and within the station contains an image generator, an interoperability interface, and a simulation scenario. 
     - Both interfaces are commented out, so I believe that they are not too important for the prgram to run.
@@ -38,3 +53,11 @@ Once mixr is opened in visual studio:
 - The player is an blue-sided F-16A Aircraft, with an altitude of 20000 feet, and a velocity of 250 (mph?)
 - In this simulation, there is an aircraft flying at 250 (mph?). I am going to find a way to track his position and update it to the console. Once completed, I will try to output the positon to a GLUT display.
 
+### test0.edl
+
+
+
+
+### Helpful Links
+[The Mixed Reality Simulation Platform (MIXR)](https://www.mixr.dev/assets/pages/docs/the-mixed-reality-simulation-platform-csc-2018.pdf)  
+[Mixr Documentation](https://www.mixr.dev/docs.html)
