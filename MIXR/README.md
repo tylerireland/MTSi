@@ -87,8 +87,16 @@ Tutorial 5 creates it's own class called MyObj. It inherits Mixr's Object class.
 - Lastly, the object is deleted before the program ends.
 
 ### Tutorial 6
-This tutorial creates a new component class named MyComp that inherits from the Component class
+This tutorial creates a new component class named MyComp that inherits from the Component class. 
+- Component classes allow objects to have time-critical and regular processes.
+- Time-critical tasks are those that need to finish executing in a certain amount of time, like math calculations.
+- Regular tasks are not time-critical, they will be executed after the time-critical tasks are finished executing, tasks like writing data to a log.
+- MyComp intializes just like other classes, with a factory and build function.
+- In the main function, builder creates the MyComp object and then two functions are called; the first one being tcFrame, which executes a time-critical 'frame', and the second one being updateData, which executes a background frame.
+- The output shows all the time critical frames being executed first.
+- 
 ### Tutorial 7
+
 ### Tutorial 8
 
 
