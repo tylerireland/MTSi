@@ -4,7 +4,7 @@
 - [Opening MIXR in Visual Studio](#opening-mixr-in-visual-studio)
 - [Running an Example](#running-an-example)
 - [MIXR Basics](#mixr-basics)
-- [Tutorial](#tutorials)
+- [Tutorials](#tutorials)
 - [mainSim1 example](#mainsim1-example)
 - [Additional Links](#additional-links)
 
@@ -44,9 +44,9 @@ These two links provide a good amount of information on MIXR, like the history a
 ## Tutorials
 Below are the 8 tutorials provided. I will be writing what each tutorial consists of.
 
-
-[Tutorial 1](#tutorial-1) &emsp;&emsp; [Tutorial 2](#tutorial-2) &emsp;&emsp; [Tutorial 3](#tutorial-3) &emsp;&emsp; [Tutorial 4](#tutorial-4)  
-[Tutorial 5](#tutorial-5) &emsp;&emsp; [Tutorial 6](#tutorial-6) &emsp;&emsp; [Tutorial 7](#tutorial-7) &emsp;&emsp; [Tutorial 8](#tutorial-8)
+Links to the files:  
+[Tutorial 1](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial01) &emsp;&emsp; [Tutorial 2](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial02) &emsp;&emsp; [Tutorial 3](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial03) &emsp;&emsp; [Tutorial 4](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial04)   
+[Tutorial 5](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial05) &emsp;&emsp; [Tutorial 6](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial06) &emsp;&emsp; [Tutorial 7](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial07) &emsp;&emsp; [Tutorial 8](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial08)
        
  
   
@@ -58,7 +58,19 @@ The first tutorial is a simple "Hello World" program using their **String** clas
 - Since we created a new object in the heap, we have to make sure we delete it when done. We do that by using the ` unref() ` command, ` str->unref() `.
 
 ### Tutorial 2
+The second tutorial creates a random number generator object and outputs 10 random numbers.
+- You can create a new rng object wiht ` const auto rng = new Rng() `.
+- The next line sets a ` seed `. The seed is an arbirtrary number that will let the random generator know which 'random' numbers to output. Random numbers are not actually random. You can think of it as a really larger list of numbers with no particular order. The seed will determine where to start reading from the list. This program will not output new random numbers each time I run this if I do not change the seed.
+- The next line is a loop that outputs 10 random numbers.
+- Lastly, the object is deleted.
+
 ### Tutorial 3
+Tutorial 3 start to create objects using factories and builders. From what I understand, a factory will read in the inputs from the input files and deal with them accordingly. With this example, it looks like it checks to make sure that the Rng object is the correct object to create based on the given name.
+- The factory and builder are defined in main.cpp. Starting with the factory class, they are crating a new object to store the Rng into it. First though, it checks to make sure ` name == Rng::getFactoryName() `. This is what I am not too sure about. It looks like name is defined within one of the files while the builder method is being executed. In broad terms, it looks like the factory is essentially creating a new Rng object.
+- The builder is reading in the .edl file, which was created from the .epp (input) file. It will create the slot tables required based on the inputs in the file.
+- In main, once the builder is finished, it runs the same loop from the last tutorial and prints out ten random numbers. The seed is in the .edl file, meaning that the Rng class has a 'seed' slot in the slot table.
+- The object is deleted at the end of the program.
+
 ### Tutorial 4
 ### Tutorial 5
 ### Tutorial 6
