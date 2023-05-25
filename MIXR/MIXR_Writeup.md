@@ -12,6 +12,7 @@
 In this write up :
 - I will explain how to open up Mixr with Visual Studio
 - I will show how to add and run some examples
+- I will go through the provided tutorials and explain each one
 - I will record my process in creating a simple graphical simulation  
 
 By the end I hope to a have solid understanding of mixr and how each component works together.
@@ -72,6 +73,7 @@ Tutorial 3 start to create objects using factories and builders. From what I und
 - The object is deleted at the end of the program.
 
 ### Tutorial 4
+This tutorial is similar to the last one, but it creates an AbstractRng rather than a regular Rng. It looks like an AbstractRng is capable of printing out results from different functions, like exponential and lognormal.
 ### Tutorial 5
 ### Tutorial 6
 ### Tutorial 7
