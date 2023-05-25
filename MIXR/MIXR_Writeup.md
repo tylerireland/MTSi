@@ -44,11 +44,19 @@ These two links provide a good amount of information on MIXR, like the history a
 ## Tutorials
 Below are the 8 tutorials provided. I will be writing what each tutorial consists of.
 
+
+[Tutorial 1](#tutorial-1) &emsp;&emsp; [Tutorial 2](#tutorial-2) &emsp;&emsp; [Tutorial 3](#tutorial-3) &emsp;&emsp; [Tutorial 4](#tutorial-4)  
+[Tutorial 5](#tutorial-5) &emsp;&emsp; [Tutorial 6](#tutorial-6) &emsp;&emsp; [Tutorial 7](#tutorial-7) &emsp;&emsp; [Tutorial 8](#tutorial-8)
+       
+ 
+  
+
 ### Tutorial 1
 The first tutorial is a simple "Hello World" program using their **String** class.
 - To access the string, we have to use the `->` symbol to call a function within the string class, i.e ` str->getString() `.
 - Next, the program set that string variable to a new string using the command ` str->setString("Goodbye World\n") `.
 - Since we created a new object in the heap, we have to make sure we delete it when done. We do that by using the ` unref() ` command, ` str->unref() `.
+
 ### Tutorial 2
 ### Tutorial 3
 ### Tutorial 4
