@@ -74,7 +74,9 @@ Tutorial 3 start to create objects using factories and builders. From what I und
 
 ### Tutorial 4
 This tutorial is similar to the last one, but it creates an AbstractRng rather than a regular Rng. It looks like an AbstractRng is capable of printing out results from different functions, like exponential and lognormal.
+
 ### Tutorial 5
+Tutorial 5 creates it's own class called MyObj. It inherits Mixr's Object class. Inside MyObj are member functions, such as setColorTable, setTextColor, and setMessage. 
 ### Tutorial 6
 ### Tutorial 7
 ### Tutorial 8
