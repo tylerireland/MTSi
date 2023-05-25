@@ -54,9 +54,9 @@ Links to the files:
 
 ### Tutorial 1
 The first tutorial is a simple "Hello World" program using their **String** class.
-- To access the string, we have to use the `->` symbol to call a function within the string class, i.e ` str->getString() `.
+- To access the string, use the `->` symbol to call a function within the string class, i.e ` str->getString() `.
 - Next, the program set that string variable to a new string using the command ` str->setString("Goodbye World\n") `.
-- Since we created a new object in the heap, we have to make sure we delete it when done. We do that by using the ` unref() ` command, ` str->unref() `.
+- Since a new object was created in the heap, make sure to delete it when done. To do so, use the ` unref() ` command, ` str->unref() `.
 
 ### Tutorial 2
 The second tutorial creates a random number generator object and outputs 10 random numbers.
@@ -76,8 +76,18 @@ Tutorial 3 start to create objects using factories and builders. From what I und
 This tutorial is similar to the last one, but it creates an AbstractRng rather than a regular Rng. It looks like an AbstractRng is capable of printing out results from different functions, like exponential and lognormal.
 
 ### Tutorial 5
-Tutorial 5 creates it's own class called MyObj. It inherits Mixr's Object class. Inside MyObj are member functions, such as setColorTable, setTextColor, and setMessage. 
+Tutorial 5 creates it's own class called MyObj. It inherits Mixr's Object class. Inside MyObj are member functions, such as setColorTable, setTextColor, and setMessage. - - This provides the basic layout of a class and how to use it. 
+- Each class requires a header file and a source file. The header file will declare the name of the class, as well as all the member functions and variables. There are no definitions in the header file. The source file will include the definition of those member functions. 
+- You can think of the header file as a template for the class and the source file would be the template once it is all filled in. 
+- Taking a look at the header file, there are a few member functions, as well as objects created that will be used in the slot table. The slot table is what connects the input file to the code. You will declare different variables in the input files that will then be put into the slot table.
+- Now looking at the source file, there is a ` SLOTTABLE ` and a ` SLOT_MAP `. Inside the slot table are different variables, such as, ` colorTable `, ` textColor `, ` vector `, etc. These will be defined in the input file and later assigned to these slots with the slot map.
+- After the slot table and slot map are the definitions for all the member functions.
+- The .edl file contains all the information required for the object. All of those variables in the slot table are defined in this file. Once this file is read in and all slots are assigned, all of the member functions can be called in main.
+- Inside main.cpp, I can see that there is a factory and builder here as well. The factory and builder is creating the MyObj object before it can be used. The dumpContents() method is called on myObj which will print out all of the objects assets in the slot table.
+- Lastly, the object is deleted before the program ends.
+
 ### Tutorial 6
+This tutorial creates a new component class named MyComp that inherits from the Component class
 ### Tutorial 7
 ### Tutorial 8
 
