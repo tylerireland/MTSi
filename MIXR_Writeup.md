@@ -4,6 +4,7 @@
 - [Opening MIXR in Visual Studio](#opening-mixr-in-visual-studio)
 - [Running an Example](#running-an-example)
 - [MIXR Basics](#mixr-basics)
+- [Tutorial](#tutorials)
 - [mainSim1 example](#mainsim1-example)
 - [Additional Links](#additional-links)
 
@@ -39,6 +40,24 @@ Once mixr is opened in visual studio:
 These two links provide a good amount of information on MIXR, like the history and overview, as well as the framework.
 - [The Mixed Reality Simulation Platform (MIXR)](https://www.mixr.dev/assets/pages/docs/the-mixed-reality-simulation-platform-csc-2018.pdf)  
 - [Mixr Documentation](https://www.mixr.dev/docs.html)
+
+## Tutorials
+Below are the 8 tutorials provided. I will be writing what each tutorial consists of.
+
+### Tutorial 1
+The first tutorial is a simple "Hello World" program using their **String** class.
+- To access the string, we have to use the `->` symbol to call a function within the string class, i.e ` str->getString() `.
+- Next, the program set that string variable to a new string using the command ` str->setString("Goodbye World\n") `.
+- Since we created a new object in the heap, we have to make sure we delete it when done. We do that by using the ` unref() ` command, ` str->unref() `.
+### Tutorial 2
+### Tutorial 3
+### Tutorial 4
+### Tutorial 5
+### Tutorial 6
+### Tutorial 7
+### Tutorial 8
+
+
 
 ## mainSim1 example
 
