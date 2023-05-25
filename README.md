@@ -1,9 +1,9 @@
 # MTSi Internship
 
 ### Supervisor
-- **Aaron Royal** | _aaron.royal@mtsi-va.com_ | (937) 612-3344
+- **Aaron Royal** &nbsp;|&nbsp; _aaron.royal@mtsi-va.com_ &nbsp;|&nbsp; (937) 612-3344
 
 ### Other Contacts
-- **Joshua Gross** |  _joshua.gross@mtsi-vs.com_ | (302) 299-5304
-- **Eric Miller** | _eric.miller@mtsi-va.com_| (513) 617-2985
-- **Bryan Lloyd** | _bryan.lloyd@mtsi-va.com_ | (706) 581-2673
+- **Joshua Gross** &nbsp;|&nbsp;  _joshua.gross@mtsi-vs.com_ &nbsp;|&nbsp; (302) 299-5304
+- **Eric Miller**  &nbsp;|&nbsp; _eric.miller@mtsi-va.com_   &nbsp;|&nbsp; (513) 617-2985
+- **Bryan Lloyd**  &nbsp;|&nbsp; _bryan.lloyd@mtsi-va.com_   &nbsp;|&nbsp; (706) 581-2673
