@@ -1,16 +1,16 @@
 # Working with MIXR (Mixed Reality Simulation Platform)
 
 ### **_Table of Contents_**
+- [MIXR Basics](#mixr-basics)
 - [Opening MIXR in Visual Studio](#opening-mixr-in-visual-studio)
 - [Running an Example](#running-an-example)
-- [MIXR Basics](#mixr-basics)
 - [Tutorials](#tutorials)
-- [mainSim1 example](#mainsim1-example)
-- [Additional Links](#additional-links)
+- [MainSim1 example](#mainsim1-example)
+- [References](#references)
 
 
 In this write up :
-- I will explain how to open up Mixr with Visual Studio
+- I will explain how to open up MIXR with Visual Studio
 - I will show how to add and run some examples
 - I will go through the provided tutorials and explain each one
 - I will record my process in creating a simple graphical simulation  
@@ -20,6 +20,13 @@ By the end I hope to a have solid understanding of mixr and how each component w
 ### Goal
 I am working with the mainSim1 example, which is a simple simulation of an aircraft flying at a set speed. I plan to track it's position and output it to a graphical display. Eventually, I may try to find ways to interact with the aircrafts velocity and heading and also output that to a display.
 
+## MIXR Basics
+MIXR is a framework used to develop simulation applications. It is not itself an exectuable, but a collection of libraries used to create applications. It is an very object-oiented framework that uses it's object class to initialize eveyrthing, from strings to players (aircrafts).  
+
+MIXR was previously named OpenEaagles, an open source version of Eaagles. These links below will provide much more information on MIXR's history and framework.  
+- [The Mixed Reality Simulation Platform (MIXR)](https://www.mixr.dev/assets/pages/docs/the-mixed-reality-simulation-platform-csc-2018.pdf)  
+- [MIXR Overview](https://www.mixr.dev/overview.html)
+- [MIXR Documentation](https://www.mixr.dev/docs.html)
 
 ## Opening MIXR in Visual Studio
 1. First, download the current release [**_here_**](https://www.mixr.dev/downloads.html)
@@ -36,11 +43,6 @@ Once mixr is opened in visual studio:
 5. Double Click ` make-edl.cmd `. This will create any required .edl files to run the program
 6. Back in Visual Studo, right click on your project and select ` Set as Startup Project ` and the run the solution
 7. The project should build and run successfully
-
-## MIXR Basics
-These two links provide a good amount of information on MIXR, like the history and overview, as well as the framework.
-- [The Mixed Reality Simulation Platform (MIXR)](https://www.mixr.dev/assets/pages/docs/the-mixed-reality-simulation-platform-csc-2018.pdf)  
-- [Mixr Documentation](https://www.mixr.dev/docs.html)
 
 ## Tutorials
 Below are the 8 tutorials provided. I will be writing what each tutorial consists of.
@@ -76,7 +78,7 @@ Tutorial 3 start to create objects using factories and builders. From what I und
 This tutorial is similar to the last one, but it creates an AbstractRng rather than a regular Rng. It looks like an AbstractRng is capable of printing out results from different functions, like exponential and lognormal.
 
 ### Tutorial 5
-Tutorial 5 creates it's own class called MyObj. It inherits Mixr's Object class. Inside MyObj are member functions, such as setColorTable, setTextColor, and setMessage. - - This provides the basic layout of a class and how to use it. 
+Tutorial 5 creates it's own class called MyObj. It inherits MIXR's Object class. Inside MyObj are member functions, such as setColorTable, setTextColor, and setMessage. - - This provides the basic layout of a class and how to use it. 
 - Each class requires a header file and a source file. The header file will declare the name of the class, as well as all the member functions and variables. There are no definitions in the header file. The source file will include the definition of those member functions. 
 - You can think of the header file as a template for the class and the source file would be the template once it is all filled in. 
 - Taking a look at the header file, there are a few member functions, as well as objects created that will be used in the slot table. The slot table is what connects the input file to the code. You will declare different variables in the input files that will then be put into the slot table.
@@ -101,7 +103,7 @@ This tutorial creates a new component class named MyComp that inherits from the 
 
 
 
-## mainSim1 example
+## MainSim1 example
 
 ### main.cpp
 - many class files are included, such as the Station, edl_parser, Pair, Integer, etc.
@@ -124,7 +126,8 @@ This tutorial creates a new component class named MyComp that inherits from the 
 
 
 
-### Additional Links
+## References
 - [The Mixed Reality Simulation Platform (MIXR)](https://www.mixr.dev/assets/pages/docs/the-mixed-reality-simulation-platform-csc-2018.pdf)  
-- [Mixr Documentation](https://www.mixr.dev/docs.html)  
+- [MIXR Documentation](https://www.mixr.dev/docs.html)  
 - [Design & Implementation of Virtual Simulations](https://www.mixr.dev/assets/pages/docs/iitsec-2008-tutorial.pdf)
+- [MIXR Overview](https://www.mixr.dev/overview.html)
