@@ -161,20 +161,36 @@ Rng* builder(const std::string& filename)
     return random;
 }
 ```
-- The factory and builder are defined in main.cpp. Starting with the factory class, they are crating a new object to store the Rng into it. First though, it checks to make sure ` name == Rng::getFactoryName() `. This is what I am not too sure about. It looks like name is defined within one of the files while the builder method is being executed. In broad terms, it looks like the factory is essentially creating a new Rng object.
-- The builder is reading in the .edl file, which was created from the .epp (input) file. It will create the slot tables required based on the inputs in the file.
-- In main, once the builder is finished, it runs the same loop from the last tutorial and prints out ten random numbers. The seed is in the .edl file, meaning that the Rng class has a 'seed' slot in the slot table.
-- The object is deleted at the end of the program.
+- This will attampt to cast to a proper object
+
+```cpp
+int main(int argc, char* argv[])
+{
+   std::string configFilename = "file0.edl";
+   Rng* rng{builder(configFilename)};
+```
+- A string named "file0.edl" is passed into the builder function. This .edl file is created from the input file. It contains the variales required for the random number generator.
+
+```cpp
+for (int i=0; i<10; i++) {
+      std::cout << rng->num() << std::endl;
+   }
+
+   rng->unref();
+```
+- Just like the last example, random numbers are printed out and the Rng object is deleted.
 
 [Tutorial 3 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial03)
 
 ### Tutorial 4
-This tutorial is similar to the last one, but it creates an AbstractRng rather than a regular Rng. It looks like an AbstractRng is capable of printing out results from different functions, like exponential and lognormal.
+This tutorial is similar to the previous one. Instead of creating a regular Rng object, it creates AbstractRng Objects such as Exponential, Lognormal, and Uniform.  
 
 [Tutorial 4 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial04)
 
 ### Tutorial 5
-Tutorial 5 creates it's own class called MyObj. It inherits MIXR's Object class. Inside MyObj are member functions, such as setColorTable, setTextColor, and setMessage. - - This provides the basic layout of a class and how to use it. 
+Tutorial 5 creates it's own class called MyObj. It inherits MIXR's Object class. Inside MyObj are member functions, such as setColorTable, setTextColor, and setMessage. 
+
+- This provides the basic layout of a class and how to use it. 
 - Each class requires a header file and a source file. The header file will declare the name of the class, as well as all the member functions and variables. There are no definitions in the header file. The source file will include the definition of those member functions. 
 - You can think of the header file as a template for the class and the source file would be the template once it is all filled in. 
 - Taking a look at the header file, there are a few member functions, as well as objects created that will be used in the slot table. The slot table is what connects the input file to the code. You will declare different variables in the input files that will then be put into the slot table.
