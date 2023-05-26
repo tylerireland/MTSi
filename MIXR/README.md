@@ -106,13 +106,11 @@ Tutorial 3 start to create objects using factories and builders.
 mixr::base::Object* factory(const std::string& name)
 {
    mixr::base::Object* obj{};
-
-   // look in application's classes
+   
    if ( name == Rng::getFactoryName() ) {
       obj = new Rng;
    }
 
-   // look in base classes
    if (obj == nullptr) obj = mixr::base::factory(name);
    return obj;
 }
@@ -122,13 +120,13 @@ mixr::base::Object* factory(const std::string& name)
 ```cpp
 Rng* builder(const std::string& filename)
 {
-   // read configuration file
    int num_errors{};
    mixr::base::Object* obj{mixr::base::edl_parser(filename, factory, &num_errors)};
    if (num_errors > 0) {
       std::cerr << "File: " << filename << ", number of errors: " << num_errors << std::endl;
       std::exit(EXIT_FAILURE);
 ```
+- Inside the builder function, an input file is read into a parser. The parser will take those inputs given from the file and connect them with the object being created using a slot table. It also uses the factory class to create the correct object.
 
 ```cpp
     if (obj == nullptr) {
@@ -136,7 +134,7 @@ Rng* builder(const std::string& filename)
         std::exit(EXIT_FAILURE);
    }
 ```
-
+- Checks to make sure an object was created and fails if not.
 
 ```cpp
     const auto pair = dynamic_cast<mixr::base::Pair*>(obj);
@@ -146,7 +144,7 @@ Rng* builder(const std::string& filename)
       pair->unref();
     }
 ```
-
+- Checks for a Pair. A pair connects a variable name from the class to a variable name from the input file.
 
 ```cpp
     const auto random = dynamic_cast<Rng*>(obj);
