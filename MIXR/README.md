@@ -45,10 +45,16 @@ Once mixr is opened in visual studio:
 7. The project should build and run successfully
 
 ## Tutorials
-I will be going through each of the 8 tutorials below
- 
-[Tutorial 1](#tutorial-1) &emsp;&emsp; [Tutorial 2](#tutorial-2) &emsp;&emsp; [Tutorial 3](#tutorial-3) &emsp;&emsp; [Tutorial 4](#tutorial-4)   
-[Tutorial 5](#tutorial-5) &emsp;&emsp; [Tutorial 6](#tutorial-6) &emsp;&emsp; [Tutorial 7](#tutorial-7) &emsp;&emsp; [Tutorial 8](#tutorial-8) 
+I will be going through each of the 8 tutorials below  
+
+[Tutorial 1 - Hello World](#tutorial-1)  
+[Tutorial 2 - Random Number Generator](#tutorial-2)  
+[Tutorial 3 - Factories and Builders](#tutorial-3)  
+[Tutorial 4 - AbstractRng](#tutorial-4)  
+[Tutorial 5 - Classes](#tutorial-5)  
+[Tutorial 6 - Components](#tutorial-6)  
+[Tutorial 7 - Glut Display](#tutorial-7)  
+[Tutorial 8 - Pagers](#tutorial-8)
   
 
 ### Tutorial 1
