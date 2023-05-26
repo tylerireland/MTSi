@@ -1,5 +1,7 @@
 # Working with MIXR (Mixed Reality Simulation Platform)
 
+[//]: # (comment)
+
 ### **_Table of Contents_**
 - [MIXR Basics](#mixr-basics)
 - [Opening MIXR in Visual Studio](#opening-mixr-in-visual-studio)
@@ -108,20 +110,31 @@ rng->unref();
 ### Tutorial 3
 Tutorial 3 start to create objects using factories and builders. 
 
+#### Factory
+
+- A factory will create the object based on the name passed in. The name can be found in the correspoding source file of that object here:
+```cpp
+IMPLEMENT_SUBCLASS(MyObj, "MyObj")
+```
+- "MyObj" is the name of the object being passed into the factory. It will check the value of that string and create the object accordingly.
 ```cpp
 mixr::base::Object* factory(const std::string& name)
 {
    mixr::base::Object* obj{};
    
-   if ( name == Rng::getFactoryName() ) {
-      obj = new Rng;
-   }
+   if ( name == MyObj::getFactoryName() ) obj = new MyObj;
+```
+- The main `Factory` class contains all of the possible objects that can be created in the same form as the example above. Since `MyObj` is a new class, it needs to be implemented in the factory class.      
 
+```cpp
    if (obj == nullptr) obj = mixr::base::factory(name);
    return obj;
 }
 ```
-- This factory class essentially creates a new Rng object
+- This will check the `mixr::base::factory` class in case the name does not match `MyObj::getFactoryName()`.  
+
+
+#### Builder
 
 ```cpp
 Rng* builder(const std::string& filename)
@@ -163,6 +176,8 @@ Rng* builder(const std::string& filename)
 ```
 - This will attampt to cast to a proper object
 
+#### Main
+
 ```cpp
 int main(int argc, char* argv[])
 {
@@ -183,12 +198,12 @@ for (int i=0; i<10; i++) {
 [Tutorial 3 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial03)
 
 ### Tutorial 4
-This tutorial is similar to the previous one. Instead of creating a regular Rng object, it creates AbstractRng Objects such as Exponential, Lognormal, and Uniform.  
+This tutorial is similar to the previous one. Instead of creating a just one Rng object, it is creating three different AbstractRng objects. Inside the .edl file there is 3 different _'objects'_; a Lognormal, a Uniform, and a Exponential. 
 
 [Tutorial 4 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial04)
 
 ### Tutorial 5
-Tutorial 5 creates it's own class called MyObj. It inherits MIXR's Object class. Inside MyObj are member functions, such as setColorTable, setTextColor, and setMessage. 
+Tutorial 5 shows the creation of a custom object. 
 
 - This provides the basic layout of a class and how to use it. 
 - Each class requires a header file and a source file. The header file will declare the name of the class, as well as all the member functions and variables. There are no definitions in the header file. The source file will include the definition of those member functions. 
