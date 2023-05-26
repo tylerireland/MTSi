@@ -45,13 +45,10 @@ Once mixr is opened in visual studio:
 7. The project should build and run successfully
 
 ## Tutorials
-Below are the 8 tutorials provided. I will be writing what each tutorial consists of.
-
-Links to the files:  
-[Tutorial 1](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial01) &emsp;&emsp; [Tutorial 2](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial02) &emsp;&emsp; [Tutorial 3](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial03) &emsp;&emsp; [Tutorial 4](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial04)   
-[Tutorial 5](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial05) &emsp;&emsp; [Tutorial 6](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial06) &emsp;&emsp; [Tutorial 7](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial07) &emsp;&emsp; [Tutorial 8](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial08)
-       
+I will be going through each of the 8 tutorials below
  
+[Tutorial 1](#tutorial-1) &emsp;&emsp; [Tutorial 2](#tutorial-2) &emsp;&emsp; [Tutorial 3](#tutorial-3) &emsp;&emsp; [Tutorial 4](#tutorial-4)   
+[Tutorial 5](#tutorial-5) &emsp;&emsp; [Tutorial 6](#tutorial-6) &emsp;&emsp; [Tutorial 7](#tutorial-7) &emsp;&emsp; [Tutorial 8](#tutorial-8) 
   
 
 ### Tutorial 1
@@ -73,6 +70,8 @@ std::cout << str->getString();
 str->unref();
 ```
 - Since the string variable is a new object located in the heap, it must be deleted to prevent memory leaks. This unref() command will delete the string object.
+
+[Tutorial 1 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial01)
 
 ### Tutorial 2
 The second tutorial creates a random number generator object and outputs 10 random numbers.
@@ -98,6 +97,7 @@ rng->unref();
 ```
 - The object is deleted to prevent memory leaks.
 
+[Tutorial 2 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial02)
 
 ### Tutorial 3
 Tutorial 3 start to create objects using factories and builders. 
@@ -160,8 +160,12 @@ Rng* builder(const std::string& filename)
 - In main, once the builder is finished, it runs the same loop from the last tutorial and prints out ten random numbers. The seed is in the .edl file, meaning that the Rng class has a 'seed' slot in the slot table.
 - The object is deleted at the end of the program.
 
+[Tutorial 3 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial03)
+
 ### Tutorial 4
 This tutorial is similar to the last one, but it creates an AbstractRng rather than a regular Rng. It looks like an AbstractRng is capable of printing out results from different functions, like exponential and lognormal.
+
+[Tutorial 4 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial04)
 
 ### Tutorial 5
 Tutorial 5 creates it's own class called MyObj. It inherits MIXR's Object class. Inside MyObj are member functions, such as setColorTable, setTextColor, and setMessage. - - This provides the basic layout of a class and how to use it. 
@@ -174,6 +178,7 @@ Tutorial 5 creates it's own class called MyObj. It inherits MIXR's Object class.
 - Inside main.cpp, I can see that there is a factory and builder here as well. The factory and builder is creating the MyObj object before it can be used. The dumpContents() method is called on myObj which will print out all of the objects assets in the slot table.
 - Lastly, the object is deleted before the program ends.
 
+[Tutorial 5 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial05)
 ### Tutorial 6
 This tutorial creates a new component class named MyComp that inherits from the Component class. 
 - Component classes allow objects to have time-critical and regular processes.
@@ -183,10 +188,21 @@ This tutorial creates a new component class named MyComp that inherits from the 
 - In the main function, builder creates the MyComp object and then two functions are called; the first one being tcFrame, which executes a time-critical 'frame', and the second one being updateData, which executes a background frame.
 - The output shows all the time critical frames being executed first.
 
+[Tutorial 6 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial06)
+
 ### Tutorial 7
+This tutorial creates a Glut display and displays different colored worms that bounce around the screen. 
+- The main file contains a factory and builder for the worms and Glut display. 
+- In the main loop, the glutDisplay is built and creates a window using the createWindow() member function. 
+- A timer is set and then the MainLoop is called. 
+- The worms are created in the builder method. Their speed, angles and colors are provided in the input file.
+
+
+[Tutorial 7 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial07)
 
 ### Tutorial 8
 
+[Tutorial 8 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial08)
 
 
 ## MainSim1 example
