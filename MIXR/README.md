@@ -274,7 +274,46 @@ END_SLOT_MAP()
 [Tutorial 5 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial05)
 
 ## Tutorial 6 - Components
-This tutorial creates a new component class named MyComp that inherits from the Component class. 
+This tutorial creates a custom component class
+
+### MyComp.hpp
+```cpp
+class MyComp final: public mixr::base::Component {
+   DECLARE_SUBCLASS(MyComp, mixr::base::Component)
+```
+- A new components is defined here, inheriting from the `Component` class. Just like the Object classes, `DECLARE_SUBCLASS` should be considered a "block box".
+
+- The rest of the header file contains the member function declarations.
+
+### MyComp.cpp
+```cpp
+IMPLEMENT_SUBCLASS(MyComp, "MyComp")
+```
+- This is the same macro as the object classes. This string variable is passed into the factory to create the correct component.
+
+```cpp
+BEGIN_SLOTTABLE(MyComp)
+  "str"
+END_SLOTTABLE(MyComp)
+
+BEGIN_SLOT_MAP(MyComp)
+  ON_SLOT(1, setSlotStr, mixr::base::String)
+END_SLOT_MAP()
+```
+- "str" is the component being created here. It is the only slot on the slot table. Just like the object classes. The string is the variable of the component located in the slot table. The slot map is what assigns the value in the input file to the variable name.
+
+- The rest of this source file contains the definitions of the member functions.
+
+
+### Main
+```cpp
+std::string configFilename = "file0.edl";
+
+MyComp* myComp{builder(configFilename)};
+```
+- A new component is being created with the builder function
+
+
 - Component classes allow objects to have time-critical and regular processes.
 - Time-critical tasks are those that need to finish executing in a certain amount of time, like math calculations.
 - Regular tasks are not time-critical, they will be executed after the time-critical tasks are finished executing, tasks like writing data to a log.
