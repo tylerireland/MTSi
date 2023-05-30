@@ -46,7 +46,7 @@ Once mixr is opened in visual studio:
 6. Back in Visual Studo, right click on your project and select ` Set as Startup Project ` and the run the solution
 7. The project should build and run successfully
 
-## Tutorials
+# Tutorials
 I will be going through each of the 8 tutorials below  
 
 [Tutorial 1 - Hello World](#tutorial-1---hello-world)  
@@ -59,10 +59,10 @@ I will be going through each of the 8 tutorials below
 [Tutorial 8 - Pagers](#tutorial-8---pagers)
   
 
-### Tutorial 1 - Hello World
+## Tutorial 1 - Hello World
 The first tutorial is a simple "Hello World" program using MIXR's **String** class.  
 
-#### Main
+### Main
 ```cpp
 const auto str = new mixr::base::String("Hello world\n");
 std::cout << str->getString();
@@ -82,10 +82,10 @@ str->unref();
 
 [Tutorial 1 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial01)
 
-### Tutorial 2 - Using Objects
+## Tutorial 2 - Using Objects
 The second tutorial creates a random number generator object and outputs 10 random numbers.
 
-#### Main
+### Main
 ```cpp
 const auto rng = new Rng();
 ```
@@ -109,10 +109,10 @@ rng->unref();
 
 [Tutorial 2 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial02)
 
-### Tutorial 3 - Factories and Builders
+## Tutorial 3 - Factories and Builders
 Tutorial 3 start to create objects using factories and builders. 
 
-#### Factory
+### Factory
 
 - A factory will create the object based on the name passed in. The name can be found in the correspoding source file of that object here:
 ```cpp
@@ -136,7 +136,7 @@ mixr::base::Object* factory(const std::string& name)
 - This will check the `mixr::base::factory` class in case the name does not match `MyObj::getFactoryName()`.  
 
 
-#### Builder
+### Builder
 
 ```cpp
 Rng* builder(const std::string& filename)
@@ -178,7 +178,7 @@ Rng* builder(const std::string& filename)
 ```
 - This will attampt to cast to a proper object
 
-#### Main
+### Main
 
 ```cpp
 int main(int argc, char* argv[])
@@ -199,16 +199,16 @@ for (int i=0; i<10; i++) {
 
 [Tutorial 3 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial03)
 
-### Tutorial 4 - Mulitple Objects
+## Tutorial 4 - Mulitple Objects
 This tutorial is similar to the previous one. Instead of creating a just one Rng object, it is creating three different AbstractRng objects. Inside the .edl file there is 3 different _'objects'_; a Lognormal, a Uniform, and a Exponential. 
 
 [Tutorial 4 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial04)
 
-### Tutorial 5 - Classes
+## Tutorial 5 - Classes
 Tutorial 5 creates a custom object class.
 
 
-#### MyObj.hpp
+### MyObj.hpp
 ```cpp
 class MyObj final: public mixr::base::Object {
 ```
@@ -221,7 +221,7 @@ class MyObj final: public mixr::base::Object {
 
 - The rest of the header file contains all of the member functions and variables.
 
-#### MyObj.cpp
+### MyObj.cpp
 
 ```cpp
 IMPLEMENT_SUBCLASS(MyObj, "MyObj")
@@ -255,7 +255,7 @@ END_SLOT_MAP()
 
 - The rest of the source file is defining all of the member functions.
 
-#### Main
+### Main
 
 ```cpp
    std::string configFilename = "file0.edl";
@@ -273,7 +273,7 @@ END_SLOT_MAP()
 
 [Tutorial 5 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial05)
 
-### Tutorial 6 - Components
+## Tutorial 6 - Components
 This tutorial creates a new component class named MyComp that inherits from the Component class. 
 - Component classes allow objects to have time-critical and regular processes.
 - Time-critical tasks are those that need to finish executing in a certain amount of time, like math calculations.
@@ -284,7 +284,7 @@ This tutorial creates a new component class named MyComp that inherits from the 
 
 [Tutorial 6 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial06)
 
-### Tutorial 7 - GLUT Display
+## Tutorial 7 - GLUT Display
 This tutorial creates a Glut display and displays different colored worms that bounce around the screen. 
 - The main file contains a factory and builder for the worms and Glut display. 
 - In the main loop, the glutDisplay is built and creates a window using the createWindow() member function. 
@@ -294,7 +294,7 @@ This tutorial creates a Glut display and displays different colored worms that b
 
 [Tutorial 7 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial07)
 
-### Tutorial 8 - Pagers
+## Tutorial 8 - Pagers
 
 [Tutorial 8 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial08)
 
