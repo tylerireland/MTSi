@@ -49,17 +49,17 @@ Once mixr is opened in visual studio:
 ## Tutorials
 I will be going through each of the 8 tutorials below  
 
-[Tutorial 1 - Hello World](#tutorial-1)  
-[Tutorial 2 - Random Number Generator](#tutorial-2)  
-[Tutorial 3 - Factories and Builders](#tutorial-3)  
-[Tutorial 4 - AbstractRng](#tutorial-4)  
-[Tutorial 5 - Classes](#tutorial-5)  
-[Tutorial 6 - Components](#tutorial-6)  
-[Tutorial 7 - Glut Display](#tutorial-7)  
-[Tutorial 8 - Pagers](#tutorial-8)
+[Tutorial 1 - Hello World](#tutorial-1---hello-world)  
+[Tutorial 2 - Using Objects](#tutorial-2---using-objects)  
+[Tutorial 3 - Factories and Builders](#tutorial-3---factories-and-builders)  
+[Tutorial 4 - Mulitple Objects](#tutorial-4---mulitple-objects)  
+[Tutorial 5 - Classes](#tutorial-5---classes)  
+[Tutorial 6 - Components](#tutorial-6---components)  
+[Tutorial 7 - Glut Display](#tutorial-7---glut-display)  
+[Tutorial 8 - Pagers](#tutorial-8---pagers)
   
 
-### Tutorial 1
+### Tutorial 1 - Hello World
 The first tutorial is a simple "Hello World" program using MIXR's **String** class.  
 
 ```cpp
@@ -81,7 +81,7 @@ str->unref();
 
 [Tutorial 1 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial01)
 
-### Tutorial 2
+### Tutorial 2 - Using Objects
 The second tutorial creates a random number generator object and outputs 10 random numbers.
 
 ```cpp
@@ -107,7 +107,7 @@ rng->unref();
 
 [Tutorial 2 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial02)
 
-### Tutorial 3
+### Tutorial 3 - Factories and Builders
 Tutorial 3 start to create objects using factories and builders. 
 
 #### Factory
@@ -197,26 +197,81 @@ for (int i=0; i<10; i++) {
 
 [Tutorial 3 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial03)
 
-### Tutorial 4
+### Tutorial 4 - Mulitple Objects
 This tutorial is similar to the previous one. Instead of creating a just one Rng object, it is creating three different AbstractRng objects. Inside the .edl file there is 3 different _'objects'_; a Lognormal, a Uniform, and a Exponential. 
 
 [Tutorial 4 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial04)
 
-### Tutorial 5
-Tutorial 5 shows the creation of a custom object. 
+### Tutorial 5 - Classes
+Tutorial 5 creates a custom object class.
 
-- This provides the basic layout of a class and how to use it. 
-- Each class requires a header file and a source file. The header file will declare the name of the class, as well as all the member functions and variables. There are no definitions in the header file. The source file will include the definition of those member functions. 
-- You can think of the header file as a template for the class and the source file would be the template once it is all filled in. 
-- Taking a look at the header file, there are a few member functions, as well as objects created that will be used in the slot table. The slot table is what connects the input file to the code. You will declare different variables in the input files that will then be put into the slot table.
-- Now looking at the source file, there is a ` SLOTTABLE ` and a ` SLOT_MAP `. Inside the slot table are different variables, such as, ` colorTable `, ` textColor `, ` vector `, etc. These will be defined in the input file and later assigned to these slots with the slot map.
-- After the slot table and slot map are the definitions for all the member functions.
-- The .edl file contains all the information required for the object. All of those variables in the slot table are defined in this file. Once this file is read in and all slots are assigned, all of the member functions can be called in main.
-- Inside main.cpp, I can see that there is a factory and builder here as well. The factory and builder is creating the MyObj object before it can be used. The dumpContents() method is called on myObj which will print out all of the objects assets in the slot table.
-- Lastly, the object is deleted before the program ends.
+
+#### MyObj.hpp
+```cpp
+class MyObj final: public mixr::base::Object {
+```
+- `MyObj` is the new class being created. It is inheriting from the `Object` class.
+
+```cpp
+   DECLARE_SUBCLASS(MyObj, mixr::base::Object)
+```
+- This is a MIXR macro. There is caution to trying to learn these macros. It it recommended to think of them as 'black boxes'.
+
+- The rest of the header file contains all of the member functions and variables.
+
+#### MyObj.cpp
+
+```cpp
+IMPLEMENT_SUBCLASS(MyObj, "MyObj")
+```
+- This is another MIXR macro. The string "MyObj" is the `name` variable that is being passed into the factory class. It checks to make sure that the string matches the name of a class, and creates the corresponding class. This is shown in main.cpp
+
+```cpp
+BEGIN_SLOTTABLE(MyObj)
+   "colorTable",         // 1: The Color table     <PairStream>
+   "textColor",          // 2: Text color          <Identifier>
+   "backColor",          // 3: Background color    <Identifier>
+   "vector",             // 4: Vector              <List>
+   "visible",            // 5: Visibility flag     <Number>
+   "message",            // 6: The message         <String>
+END_SLOTTABLE(MyObj)
+```
+- This is a slot table. This declares all of the variables in the `MyObj` class. These will be defined in the input file that will be read in with the parser.
+
+
+```cpp
+BEGIN_SLOT_MAP(MyObj)
+   ON_SLOT(1, setSlotColorTable, mixr::base::PairStream)
+   ON_SLOT(2, setSlotTextColor,  mixr::base::Identifier)
+   ON_SLOT(3, setSlotBackColor,  mixr::base::Identifier)
+   ON_SLOT(4, setSlotVector,     mixr::base::List)
+   ON_SLOT(5, setSlotVisible,    mixr::base::Number)
+   ON_SLOT(6, setSlotMessage,    mixr::base::String)
+END_SLOT_MAP()
+```
+- This slot map is what is setting those variables to those slots. Each slot corresponds to a setter function which will set those variables to the values given in the input file.
+
+- The rest of the source file is defining all of the member functions.
+
+#### Main
+
+```cpp
+   std::string configFilename = "file0.edl";
+   
+   MyObj* myObj{builder(configFilename)};
+```
+- The `myObj` object is being initialized using the builder function
+
+```cpp
+ myObj->dumpContents();
+
+ myObj->unref();
+ ```
+- All of the contents of the object are printed out to the screen and then it is deleted.
 
 [Tutorial 5 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial05)
-### Tutorial 6
+
+### Tutorial 6 - Components
 This tutorial creates a new component class named MyComp that inherits from the Component class. 
 - Component classes allow objects to have time-critical and regular processes.
 - Time-critical tasks are those that need to finish executing in a certain amount of time, like math calculations.
@@ -227,7 +282,7 @@ This tutorial creates a new component class named MyComp that inherits from the 
 
 [Tutorial 6 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial06)
 
-### Tutorial 7
+### Tutorial 7 - GLUT Display
 This tutorial creates a Glut display and displays different colored worms that bounce around the screen. 
 - The main file contains a factory and builder for the worms and Glut display. 
 - In the main loop, the glutDisplay is built and creates a window using the createWindow() member function. 
@@ -237,7 +292,7 @@ This tutorial creates a Glut display and displays different colored worms that b
 
 [Tutorial 7 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial07)
 
-### Tutorial 8
+### Tutorial 8 - Pagers
 
 [Tutorial 8 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial08)
 
