@@ -62,6 +62,7 @@ I will be going through each of the 8 tutorials below
 ### Tutorial 1 - Hello World
 The first tutorial is a simple "Hello World" program using MIXR's **String** class.  
 
+#### Main
 ```cpp
 const auto str = new mixr::base::String("Hello world\n");
 std::cout << str->getString();
@@ -84,6 +85,7 @@ str->unref();
 ### Tutorial 2 - Using Objects
 The second tutorial creates a random number generator object and outputs 10 random numbers.
 
+#### Main
 ```cpp
 const auto rng = new Rng();
 ```
