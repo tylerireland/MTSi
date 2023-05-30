@@ -1,1 +1,1 @@
-This folder contains all of the tutorial's code
+This folder contains all of the tutorials' code
