@@ -300,7 +300,8 @@ BEGIN_SLOT_MAP(MyComp)
   ON_SLOT(1, setSlotStr, mixr::base::String)
 END_SLOT_MAP()
 ```
-- "str" is the component being created here. It is the only slot on the slot table. Just like the object classes. The string is the variable of the component located in the slot table. The slot map is what assigns the value in the input file to the variable name.
+- "str" is the component being created here. It is the only slot on the slot table. 
+- Just like the object classes, the string is the variable of the component located in the slot table. The slot map is what assigns the value in the input file to the variable name.
 
 - The rest of this source file contains the definitions of the member functions.
 
