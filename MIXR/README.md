@@ -39,7 +39,7 @@ MIXR was previously named OpenEaagles, an open source version of Eaagles. These 
 ## Running an Example
 Once mixr is opened in visual studio:
 1. Select File > Add > Existing Project
-2. In the file explorer, select ` mixr_examples / build / vs2017 / mainSim1.vcxproj `
+2. In the file explorer, select ` mixr_examples / build / vs2017 / exampleProj.vcxproj `
 3. This should add the project into the solution.
 4. Before running the project, open up the mixr_examples folder once again, but this time select the folder with the same name as your project
 5. Double Click ` make-edl.cmd `. This will create any required .edl files to run the program
