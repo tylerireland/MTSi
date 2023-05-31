@@ -314,13 +314,26 @@ MyComp* myComp{builder(configFilename)};
 ```
 - A new component is being created with the builder function
 
+```cpp
+const double dt{1.0 / static_cast<double>(frameRate)};
+```
+- Creates a delta time for the time critical and regular processes
 
-- Component classes allow objects to have time-critical and regular processes.
-- Time-critical tasks are those that need to finish executing in a certain amount of time, like math calculations.
-- Regular tasks are not time-critical, they will be executed after the time-critical tasks are finished executing, tasks like writing data to a log.
-- MyComp intializes just like other classes, with a factory and build function.
-- In the main function, builder creates the MyComp object and then two functions are called; the first one being tcFrame, which executes a time-critical 'frame', and the second one being updateData, which executes a background frame.
-- The output shows all the time critical frames being executed first.
+```cpp
+myComp->tcFrame(dt);     // time critical
+myComp->updateData(dt);  // non-time critical
+
+myComp->reset();
+
+myComp->tcFrame(dt);     // time critical
+myComp->updateData(dt);  // non-time critical
+```
+- Time critical and regular processes are being executed in this code
+
+```cpp
+myComp->unref();
+```
+- The component is deleted at the end of the program
 
 [Tutorial 6 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial06)
 
