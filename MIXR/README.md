@@ -339,10 +339,82 @@ myComp->unref();
 
 ## Tutorial 7 - GLUT Display
 This tutorial creates a Glut display and displays different colored worms that bounce around the screen. 
-- The main file contains a factory and builder for the worms and Glut display. 
-- In the main loop, the glutDisplay is built and creates a window using the createWindow() member function. 
-- A timer is set and then the MainLoop is called. 
-- The worms are created in the builder method. Their speed, angles and colors are provided in the input file.
+
+### Worms.hpp
+```cpp
+class Worm final: public mixr::graphics::Graphic
+{
+   DECLARE_SUBCLASS(Worm, mixr::graphics::Graphic)
+```
+- Similar to the other classes looked at. The subclass macro is declared as well as the member functions
+### Worms.cpp
+```cpp
+IMPLEMENT_SUBCLASS(Worm, "Worm")
+EMPTY_DELETEDATA(Worm)
+
+BEGIN_SLOTTABLE(Worm)
+   "speed",            // 1: speed
+   "startAngle",       // 2: starting angle (off X axis)
+END_SLOTTABLE(Worm)
+
+BEGIN_SLOT_MAP(Worm)
+   ON_SLOT(1, setSlotSpeed, mixr::base::Number)
+   ON_SLOT(2, setSlotAngle, mixr::base::Angle)
+   ON_SLOT(2, setSlotAngle, mixr::base::Number)
+END_SLOT_MAP()
+
+BEGIN_EVENT_HANDLER(Worm)
+END_EVENT_HANDLER()
+
+Worm::Worm()
+{
+   STANDARD_CONSTRUCTOR()
+   setSpeed(10.0);
+}
+```
+- The Worm source file is similar to other source files. There is a slot table that contains all of the variables, as well as a map to map those variables from the input file. `BEGIN_EVENT_HANDLER` is also a MIXR macro, so I assume that it will keep track of the worms and keep updating them.
+
+### Main
+```cpp
+
+const int frameRate{20};
+mixr::glut::GlutDisplay* glutDisplay{};
+
+// timerFunc() -- Time critical stuff)
+void timerFunc(int)
+{
+   const double dt{1.0 / static_cast<double>(frameRate)};
+   const int millis{static_cast<int>(dt * 1000)};
+   glutTimerFunc(millis, timerFunc, 1);
+
+   mixr::base::Timer::updateTimers(static_cast<float>(dt));
+   mixr::graphics::Graphic::flashTimer(static_cast<double>(dt));
+   glutDisplay->tcFrame(static_cast<double>(dt));
+}
+```
+- This is a new timer function right above the factory class. It is used for time critical processes
+
+```cpp
+glutInit(&argc, argv);
+
+std::string configFilename = "file0.edl";
+
+glutDisplay = builder(configFilename);
+
+glutDisplay->createWindow();
+```
+- Under the main function, these lines will craete the Glut display and generate a window.
+
+```cpp
+ const double dt{1.0 / static_cast<double>(frameRate)};
+   const int millis{static_cast<int>(dt * 1000)};
+   glutTimerFunc(millis, timerFunc, 1);
+
+   // main loop
+   glutMainLoop();
+   ```
+   - A timer is set and the main loop for the glut display is called to keep the windown updated.
+
 
 
 [Tutorial 7 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial07)
