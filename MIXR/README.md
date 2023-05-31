@@ -62,7 +62,7 @@ I will be going through each of the 8 tutorials below
 ## Tutorial 1 - Hello World
 The first tutorial is a simple "Hello World" program using MIXR's **String** class.  
 
-### Main
+### main.cpp
 ```cpp
 const auto str = new mixr::base::String("Hello world\n");
 std::cout << str->getString();
@@ -85,7 +85,7 @@ str->unref();
 ## Tutorial 2 - Using Objects
 The second tutorial creates a random number generator object and outputs 10 random numbers.
 
-### Main
+### main.cpp
 ```cpp
 const auto rng = new Rng();
 ```
@@ -178,7 +178,7 @@ Rng* builder(const std::string& filename)
 ```
 - This will attampt to cast to a proper object
 
-### Main
+### main.cpp
 
 ```cpp
 int main(int argc, char* argv[])
@@ -255,7 +255,7 @@ END_SLOT_MAP()
 
 - The rest of the source file is defining all of the member functions.
 
-### Main
+### mian.cpp
 
 ```cpp
    std::string configFilename = "file0.edl";
@@ -306,7 +306,7 @@ END_SLOT_MAP()
 - The rest of this source file contains the definitions of the member functions.
 
 
-### Main
+### main.cpp
 ```cpp
 std::string configFilename = "file0.edl";
 
@@ -374,7 +374,7 @@ Worm::Worm()
 ```
 - The Worm source file is similar to other source files. There is a slot table that contains all of the variables, as well as a map to map those variables from the input file. `BEGIN_EVENT_HANDLER` is also a MIXR macro, so I assume that it will keep track of the worms and keep updating them.
 
-### Main
+###  main.cpp
 ```cpp
 
 const int frameRate{20};
