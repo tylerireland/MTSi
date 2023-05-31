@@ -47,16 +47,18 @@ Once mixr is opened in visual studio:
 7. The project should build and run successfully
 
 # Tutorials
-I will be going through each of the 8 tutorials below  
+I will be going over each of the 8 tutorials provided in `mixr-examples`
 
-[Tutorial 1 - Hello World](#tutorial-1---hello-world)  
-[Tutorial 2 - Using Objects](#tutorial-2---using-objects)  
-[Tutorial 3 - Factories and Builders](#tutorial-3---factories-and-builders)  
-[Tutorial 4 - Mulitple Objects](#tutorial-4---mulitple-objects)  
-[Tutorial 5 - Classes](#tutorial-5---classes)  
-[Tutorial 6 - Components](#tutorial-6---components)  
-[Tutorial 7 - Glut Display](#tutorial-7---glut-display)  
-[Tutorial 8 - Pagers](#tutorial-8---pagers)
+You can find brief explanations of all the examples on their GitHub [**_here_**](https://github.com/doughodson/OpenEaaglesExamples/blob/master/README.md)
+
+- [Tutorial 1 - Hello World](#tutorial-1---hello-world)  
+- [Tutorial 2 - Using Objects](#tutorial-2---using-objects)  
+- [Tutorial 3 - Factories and Builders](#tutorial-3---factories-and-builders)  
+- [Tutorial 4 - Mulitple Objects](#tutorial-4---mulitple-objects)  
+- [Tutorial 5 - Classes](#tutorial-5---classes)  
+- [Tutorial 6 - Components](#tutorial-6---components)  
+- [Tutorial 7 - Glut Display](#tutorial-7---glut-display)  
+- [Tutorial 8 - Pagers](#tutorial-8---pagers)
   
 
 ## Tutorial 1 - Hello World
