@@ -443,6 +443,7 @@ private:
    // slot table helper method for number
    bool setSlotSeed(const mixr::base::Number* const); 
 };
+```
 - The idea was to make the input versatile, either entering a number or a string. The string should only be ` random ` to get a random seed. Any other string will default in a ` 0 ` for the seed. This requires two different functions; one that takes a string and another that takes a number.
 
 ### Rng.cpp
