@@ -427,25 +427,71 @@ glutDisplay->createWindow();
 [Tutorial 8 Files](https://github.com/tylerireland/MTSi/tree/main/MIXR/code/tutorial08)
 
 
-## MainSim1 example
+## Making the RNG Actually Random
+In tutorial 2 and 3, an random number generator object is created and outputs ten "random" numbers. As I explained, they are not truly random. A seed is required for the random library to generate random numbers, however, running the code with the same seed will result in the same 10 numbers. 
 
-### main.cpp
-- many class files are included, such as the Station, edl_parser, Pair, Integer, etc.
-- many factory classes are included as well
+Christian and I decided to make the Generator truly random. The way to do that is by accessing the local time through the ` ctime ` library. It returns, in seconds, the time now since epoch `Jan 1, 1970 0:00`. This will always give us a new number every second.
 
-### test0.epp
-- location: ` mixr_examples / mainSim1 / configs ` 
-- There is a copy of the file on my repo [**_here_**](https://github.com/tylerireland/MTSi/blob/main/test0.epp)  
+We plugged that number into the seed and nw everytime we run the code, it will give us truly random numbers.
 
-- At first glance, this file is really small. There are not many line at all. The description says that it is a single aircraft player (player being the aircraft).
-- A station is initialized and within the station contains an image generator, an interoperability interface, and a simulation scenario. 
-    - Both interfaces are commented out, so I believe that they are not too important for the prgram to run.
-- Looking at the simualtion scenario, there is a lat/postion, as well as a player that continase the aircraft name, id, type, signature, XPos, Ypos, altitude,
-  heading, velocity, and side.
-- The player is an blue-sided F-16A Aircraft, with an altitude of 20000 feet, and a velocity of 250 (mph?)
-- In this simulation, there is an aircraft flying at 250 (mph?). I am going to find a way to track his position and update it to the console. Once completed, I will try to output the positon to a GLUT display.
+### Rng.hpp
+```cpp
+private:
+   // slot table helper method for string
+   bool setSlotSeed(const mixr::base::String* const);
 
-### test0.edl
+   // slot table helper method for number
+   bool setSlotSeed(const mixr::base::Number* const); 
+};
+- The idea was to make the input versatile, either entering a number or a string. The string should only be ` random ` to get a random seed. Any other string will default in a ` 0 ` for the seed. This requires two different functions; one that takes a string and another that takes a number.
+
+### Rng.cpp
+```cpp
+BEGIN_SLOT_MAP(Rng)
+   ON_SLOT(1, setSlotSeed, mixr::base::String)
+   ON_SLOT(1, setSlotSeed, mixr::base::Number)
+END_SLOT_MAP()
+```
+- To allow the ` seed ` to be a string or a number, we needed to add a slot map for the seed that will take in a string.
+
+```cpp
+bool Rng::setSlotSeed(const mixr::base::String* const seed)
+{
+    bool ok{};
+
+    mixr::base::String* str = new mixr::base::String("random");
+
+    std::string input_string(seed->getString());
+    std::string test_string(str->getString());
+
+    if (input_string.compare(test_string) == 0)  
+    {
+        time_t random = (int)time(NULL);
+
+        if (seed != nullptr) {
+            setSeed(random);
+            ok = true;
+        }
+    }
+    else
+    {
+        int default = 0;
+
+        if (seed != nullptr) {
+            setSeed(default);
+            ok = true;
+        }
+    }
+    
+    return ok;
+}
+```
+- The set slot function is fairly simply. It takes in the string as an input, and compares it to another string that has the value ` random `. If both strings match, we create a ` time_t ` object that will give us that current time in seconds. We then plug it into the setSeed function.
+
+- The original setSlotSeed function is left unchanged
+
+
+
 
 
 
