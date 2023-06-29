@@ -1,0 +1,465 @@
+( ProjectDisplay
+
+  resizeSubwindows: true              // full screen or not
+  name: "LeftDisplay"       // display name
+
+  // logical coordinate system for openGL drawing
+  left:       -10.5              // left ortho bound
+  right:       10.5              // right ortho bound
+  bottom:     -10.5              // bottom ortho bound
+  top:         10.5              // top ortho bound
+
+  // physical dimensions (in pixels) of the window
+  vpX: 0                       // viewport x origin
+  vpY: 0                       // viewport y origin
+  vpWidth: 500                   // viewport width
+  vpHeight: 500                  // viewport height 
+
+  clearDepth: 20.0
+  clearColor: ( rgb 1.0 1.0 1.0 )
+
+  // define a color table
+  colorTable: {
+    black:     ( rgba 0 0 0 )
+    red:       ( rgb 1 0 0 )
+    green:     ( rgb 0 1 0 )
+    yellow:    ( rgb 1 1 0 )
+    blue:      ( rgb 0 0 1 )
+    magenta:   ( rgb 1 0 1 )
+    cyan:      ( rgb 0 1 1 )
+    white:     ( rgb 1 1 1 )
+    gray:      ( rgb 0.4 0.4 0.4 )
+    gray2:     ( rgb 0.2 0.2 0.2 ) 
+    amber:     ( rgb 1 0.5 0 )
+  }
+
+
+  normalFont: normal
+
+  fonts: {
+      // normal font for most display stuff
+      normal:
+      ( FTGLHaloFont
+            fontPosition: [ -10 10 ]
+            path: MIXR_DATA_FONT_PATH
+            file: "arialn.ttf"
+            // facesize is default to 1 inch, so you can maninpulate the norm with font width and height
+            linewidth: 2
+            fontWidth: 1.5
+            fontHeight: 1.0
+        )        
+    }
+    // center line dividing left and right displays
+    components: {
+      ( Line
+         segment: true
+         color: black
+         linewidth: 2
+         vertices: {
+            [  10.5 11.0 ]  [   10.5 -11.0 ]
+         }
+      )
+   }
+
+
+  //
+  // Page class settings
+  //
+  page: p1                       // initial subpage
+  pages: {                       // subpages
+
+    // first page defined
+    p1: ( MyPager
+        pagingEvent: { n: p2 p: p2 }
+        components: {
+        ( AsciiText
+            color: white
+            transform: { ( Translation -2.35 5.6 ) (Scale 1.2 )}
+            text: "+1 Ball"
+        )
+        // +1 ball button
+        ( Button
+            transform: ( Translation 0 5.25 )
+            selectName: 1
+            eventId: 1000
+            components: {
+                ( Polygon
+                    color: blue
+                    vertices: {
+                        [ -2.5 -0.1 ]
+                        [ -2.5  1.8 ]
+                        [  2.5  1.8 ]
+                        [  2.5 -0.1 ]
+                    }
+                )
+            }
+        )
+        ( AsciiText
+            color: white
+            transform: { ( Translation -4.65 2.75 ) (Scale 1.2) }
+            text: "Change Color"
+        )
+        // change color button
+        ( Button
+            transform: ( Translation 0 2.3 )
+            selectName: 2
+            eventId: 1001
+            components: {
+                ( Polygon
+                    color: blue
+                    vertices: {
+                        [ -5.0 -0.1 ]
+                        [ -5.0  1.8 ]
+                        [  5.0  1.8 ]
+                        [  5.0 -0.1 ]
+                    }
+                )
+            }
+        )
+        ( AsciiText
+            color: white
+            transform: { ( Translation -2 -0.2 ) ( Scale 1.2 ) } 
+            text: "Reset"
+        )
+        // Reset button
+        ( Button
+            transform: ( Translation 0 -0.7 )
+            selectName: 3
+            eventId: 1002
+            components: {
+                ( Polygon
+                    color: blue
+                    vertices: {
+                        [ -2.5 -0.1 ]
+                        [ -2.5  1.8 ]
+                        [  2.5  1.8 ]
+                        [  2.5 -0.1 ]
+                    }
+                )
+            }
+        )
+        // Score 
+        ( AsciiText
+            color: black
+            transform: { ( Translation -2.65 8.0 ) (Scale 1.2 ) }
+            text: "Score: "
+        )
+        scoreROSD: 
+        ( NumericReadout
+            color: black
+            transform: ( Translation 1 8 )
+            format: "####"
+        )
+        // Gravity
+        ( AsciiText
+            color: black
+            transform: { ( Translation -2.8 -3.5 ) ( Scale 1.5 ) }
+            text: "Gravity"
+        )
+        // Speed
+        ( AsciiText
+            color: black
+            transform: { ( Translation -2.5 -7.5 ) ( Scale 1.5 ) }
+            text: "Speed"
+        )
+        // slider box for gravity 
+        ( Button 
+            transform: ( Translation 0 -0.15 )
+            components: {
+                ( Polygon
+                color: blue
+                vertices: {
+                    [ -0.5  -4.50 ]
+                    [ -0.5  -5.25 ]
+                    [  0.5  -5.25 ]
+                    [  0.5  -4.50 ]
+                    }
+                ) 
+            }
+        )
+        // slider line under Gravity
+        ( Line
+         segment: true
+         linewidth: 2
+         color: black
+         vertices: {
+            [  -6.0 -5 ]  [ 6.0 -5 ]
+         }
+        )
+        // vertical line for gravity plus sign
+        ( Line
+         segment: true
+         linewidth: 2
+         color: black
+         vertices: {
+            [  6.6 -4.6 ]  [ 6.6 -5.4 ]
+         }
+        )
+        // horizontal line for gravity plus sign
+        ( Line
+         segment: true
+         linewidth: 2
+         color: black
+         vertices: {
+            [  6.2 -5.0 ]  [ 7.0 -5.0]
+         }
+        )
+        // negative sign for gravity slider
+        ( Line
+         segment: true
+         linewidth: 2
+         color: black
+         vertices: {
+            [  -7.0 -5.0 ]  [ -6.2 -5.0]
+         }
+        )
+        // slider box for speed 
+        ( Button 
+            transform: ( Translation 0 -4.15 )
+            components: {
+                ( Polygon
+                color: blue
+                vertices: {
+                    [ -0.5  -4.50 ]
+                    [ -0.5  -5.25 ]
+                    [  0.5  -5.25 ]
+                    [  0.5  -4.50 ]
+                    }
+                ) 
+            }
+        )
+        // slider line under Speed
+        ( Line
+         segment: true
+         linewidth: 2
+         color: black
+         vertices: {
+            [  -6.0 -9.0 ]  [ 6.0 -9.0 ]
+         }
+        )
+        // minus sign for speed 
+        ( Line
+         segment: true
+         linewidth: 2
+         color: black
+         vertices: {
+            [  -7.0 -9.0 ]  [ -6.2 -9.0]
+          }
+         )
+        // vertical line for speed plus sign
+        ( Line
+         segment: true
+         linewidth: 2
+         color: black
+         vertices: {
+            [  6.6 -8.6 ]  [ 6.6 -9.4 ]
+         }
+        )
+        // horizontal line for speed plus sign
+        ( Line
+         segment: true
+         linewidth: 2
+         color: black
+         vertices: {
+            [  6.2 -9.0 ]  [ 7.0 -9.0]
+         }
+        )
+       }  // p1 components
+     ) // MyPager
+
+     // second page
+     p2: ( MyPager
+           pagingEvent: { n: p1 p: p1 }
+           components: {
+           // blue button text
+           ( AsciiText
+            color: white
+            transform: { ( Translation -6 7.6 ) (Scale 0.90 )}
+            text: "Blue"
+           )
+           // blue button
+           ( Button
+            transform: ( Translation -5 7.5 )
+            selectName: 1
+            eventId: 1000
+            components: {
+                ( Polygon
+                    color: blue
+                    vertices: {
+                        [ -2.0 -0.1 ]
+                        [ -2.0  0.8 ]
+                        [  2.0  0.8 ]
+                        [  2.0 -0.1 ]
+                    }
+                )
+              }
+            )
+           // red button text
+           ( AsciiText
+            color: white
+            transform: { ( Translation -6 5.6 ) (Scale 0.90 )}
+            text: "Red"
+           )
+           // red button
+           ( Button
+            transform: ( Translation -5 5.5 )
+            selectName: 1
+            eventId: 1000
+            components: {
+                ( Polygon
+                    color: red
+                    vertices: {
+                        [ -2.0 -0.1 ]
+                        [ -2.0  0.8 ]
+                        [  2.0  0.8 ]
+                        [  2.0 -0.1 ]
+                    }
+                )
+              }
+            )
+           // green button text
+           ( AsciiText
+            color: white
+            transform: { ( Translation -6.5 3.6 ) (Scale 0.90 )}
+            text: "Green"
+           )
+           // green button
+           ( Button
+            transform: ( Translation -5 3.5 )
+            selectName: 1
+            eventId: 1000
+            components: {
+                ( Polygon
+                    color: green
+                    vertices: {
+                        [ -2.0 -0.1 ]
+                        [ -2.0  0.8 ]
+                        [  2.0  0.8 ]
+                        [  2.0 -0.1 ]
+                    }
+                )
+              }
+            )
+            // yellow button text
+           ( AsciiText
+            color: black
+            transform: { ( Translation -6.5 1.6 ) (Scale 0.90 )}
+            text: "Yellow"
+           )
+           // yellow button
+           ( Button
+            transform: ( Translation -5 1.5 )
+            selectName: 1
+            eventId: 1000
+            components: {
+                ( Polygon
+                    color: yellow
+                    vertices: {
+                        [ -2.0 -0.1 ]
+                        [ -2.0  0.8 ]
+                        [  2.0  0.8 ]
+                        [  2.0 -0.1 ]
+                    }
+                )
+              }
+            )
+           // black button text
+           ( AsciiText
+            color: white
+            transform: { ( Translation 3.7 7.6 ) (Scale 0.90 )}
+            text: "Black"
+           )
+           // black button
+           ( Button
+            transform: ( Translation 5 7.5 )
+            selectName: 1
+            eventId: 1000
+            components: {
+                ( Polygon
+                    color: black
+                    vertices: {
+                        [ -2.0 -0.1 ]
+                        [ -2.0  0.8 ]
+                        [  2.0  0.8 ]
+                        [  2.0 -0.1 ]
+                    }
+                )
+              }
+            )
+           // white button text
+           ( AsciiText
+            color: black
+            transform: { ( Translation 3.7 5.6 ) (Scale 0.90 )}
+            text: "White"
+           )
+           // white button
+           ( Button
+            transform: ( Translation 5 5.5 )
+            selectName: 1
+            eventId: 1000
+            components: {
+                ( Polygon
+                    color: white
+                    vertices: {
+                        [ -2.0 -0.1 ]
+                        [ -2.0  0.8 ]
+                        [  2.0  0.8 ]
+                        [  2.0 -0.1 ]
+                    }
+                )
+              }
+            )
+           // magenta button text
+           ( AsciiText
+            color: white
+            transform: { ( Translation 3.1 3.6 ) (Scale 0.80 )}
+            text: "Magenta"
+           )
+           // magenta button
+           ( Button
+            transform: ( Translation 5 3.5 )
+            selectName: 1
+            eventId: 1000
+            components: {
+                ( Polygon
+                    color: magenta
+                    vertices: {
+                        [ -2.0 -0.1 ]
+                        [ -2.0  0.8 ]
+                        [  2.0  0.8 ]
+                        [  2.0 -0.1 ]
+                    }
+                )
+              }
+            )
+           // cyan button text
+           ( AsciiText
+            color: white
+            transform: { ( Translation 3.7 1.6 ) (Scale 0.90 )}
+            text: "Cyan"
+           )
+           // cyan button
+           ( Button
+            transform: ( Translation 5 1.5 )
+            selectName: 1
+            eventId: 1000
+            components: {
+                ( Polygon
+                    color: cyan
+                    vertices: {
+                        [ -2.0 -0.1 ]
+                        [ -2.0  0.8 ]
+                        [  2.0  0.8 ]
+                        [  2.0 -0.1 ]
+                    }
+                )
+              }
+            )
+     
+     } // components
+
+   ) // MyPager
+
+  } // pages
+
+) // LeftDisplay

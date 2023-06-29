@@ -1,0 +1,50 @@
+//
+// My graphics application
+//
+
+( GlutDisplay
+
+  //
+  // GlutDisplay class settings
+  //
+  resizeSubwindows: true              // full screen or not
+
+  //
+  // Display class settings
+  //
+  name: "Glut Main Window"       // display name
+
+  // logical coordinate system for openGL drawing
+  left:       -10.5              // left ortho bound
+  right:       10.5              // right ortho bound
+  bottom:     -10.5              // bottom ortho bound
+  top:         10.5              // top ortho bound
+
+  // physical dimensions (in pixels) of the window
+  vpX: 0                       // viewport x origin
+  vpY: 0                       // viewport y origin
+  vpWidth: 1000                  // viewport width
+  vpHeight: 500                  // viewport height
+
+  antiAliasing: true
+
+  clearDepth: 20.0
+  clearColor: ( rgb 1.0 1.0 1.0 )
+
+  components: {
+      ( Line
+         segment: true
+         color: black
+         vertices: {
+            [  -0.0 11.0 ]  [   -0.0 -11.0 ]
+         }
+      )
+   }
+
+
+ displays: {
+    #include "LeftDisplay.epp"
+    #include "RightDisplay.epp"
+ }
+
+) // MainDisplay
